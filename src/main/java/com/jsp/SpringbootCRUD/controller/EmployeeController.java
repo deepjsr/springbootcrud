@@ -22,24 +22,17 @@ public class EmployeeController {
 	EmployeService employeService;
 	
 	@PostMapping("/employee")
-	public boolean saveEmployee(@RequestBody Employee employee) {
+	public Employee saveEmployee(@RequestBody Employee employee) {
 		return employeService.saveEmployee(employee);
 	}
 	@GetMapping("/employee")
 	public List<Employee> getAllEmployee(){
 		return employeService.getAllEmployee();
 	}
-	
-//	@GetMapping("/employee/name/{name}")
-//    public List<Employee> getEmployeesByName(@PathVariable String name) {
-//        return employeService.findByEmployeeName(name);
-//    }
-	
 	@GetMapping("/employee/{id}")
 	public Employee getAllEmployeeBYId(@PathVariable int id) {
 		return employeService.getallemployeeById(id);
 	}
-	
 	@DeleteMapping("employee/{id}")
 	public Employee deleteEmployeeById(@PathVariable int id) {
 		return employeService.deleteEmployeeById(id);
