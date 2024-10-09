@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../../../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../../../jacoco-resources/report.gif" type="image/gif"/><title>EmployeeDao.java</title><link rel="stylesheet" href="../../../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../../../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../../../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../../../index.html" class="el_report">springbootcrud (27 Sept 2024 1:28:27 pm)</a> &gt; <a href="../../index.html" class="el_group">springbootcrud</a> &gt; <a href="../index.html" class="el_bundle">src/main/java</a> &gt; <a href="index.source.html" class="el_package">com.jsp.SpringbootCRUD.dao</a> &gt; <span class="el_source">EmployeeDao.java</span></div><h1>EmployeeDao.java</h1><pre class="source lang-java linenums">package com.jsp.SpringbootCRUD.dao;
+
+import java.util.List;
+import java.util.Optional;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Repository;
+
+import com.jsp.SpringbootCRUD.Repository.EmployeeRepository;
+import com.jsp.SpringbootCRUD.dto.Employee;
+
+@Repository
+<span class="fc" id="L13">public class EmployeeDao {</span>
+	@Autowired
+	EmployeeRepository employeeRepository;
+
+	public Employee saveEmployee(Employee employee) {
+<span class="nc" id="L18">		return employeeRepository.save(employee);</span>
+	}
+
+	public List&lt;Employee&gt; gellAllEmployee() {
+<span class="nc" id="L22">		return employeeRepository.findAll();</span>
+	}
+
+	public Employee getemployeeById(int id) {
+<span class="nc" id="L26">		Optional&lt;Employee&gt; eOptional = employeeRepository.findById(id);</span>
+<span class="nc" id="L27">		return eOptional.get();</span>
+	}
+	  
+	 public   List&lt;Employee&gt; findByEmployeeName(String name) {
+<span class="nc" id="L31">		        return employeeRepository.findByEmployeeName(name);</span>
+		    } 
+	public Employee deleteEmployeeById(int id) {
+<span class="nc" id="L34">		Optional&lt;Employee&gt; optional=employeeRepository.findById(id);</span>
+<span class="nc bnc" id="L35" title="All 2 branches missed.">		if (optional.get()!=null) {</span>
+<span class="nc" id="L36">			 employeeRepository.delete(optional.get());</span>
+		}
+		
+<span class="nc" id="L39">		return optional.get();</span>
+	}
+
+	public Employee updateEmployee(Employee employee) {
+<span class="nc" id="L43">		Optional&lt;Employee&gt; optional=employeeRepository.findById(employee.getId());</span>
+<span class="nc bnc" id="L44" title="All 2 branches missed.">		if (optional.get()!=null) {</span>
+<span class="nc" id="L45">			return employeeRepository.save(employee);</span>
+		}
+	
+<span class="nc" id="L48">			return null;</span>
+	}
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.12.202403310830</span>springbootcrud (27 Sept 2024 1:28:27 pm)</div></body></html>

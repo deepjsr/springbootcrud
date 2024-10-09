@@ -12,7 +12,7 @@ import com.jsp.SpringbootCRUD.dto.Employee;
 public class EmployeService {
 	@Autowired
 	EmployeeDao employeeDao;
-	public Employee saveEmployee(Employee employee) {
+	public boolean saveEmployee(Employee employee) {
 		return employeeDao.saveEmployee(employee);
 	}
 	public List<Employee> getAllEmployee(){
@@ -21,6 +21,10 @@ public class EmployeService {
 	public Employee getallemployeeById(int id) {
 		return employeeDao.getemployeeById(id);
 	}
+
+//	public   List<Employee> findByEmployeeName(String name) {
+//	        return employeeDao.findByEmployeeName(name);
+//	    }
 	public Employee deleteEmployeeById(int id) {
 		return employeeDao.deleteEmployeeById(id);
 	}

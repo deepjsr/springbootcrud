@@ -14,8 +14,15 @@ public class EmployeeDao {
 	@Autowired
 	EmployeeRepository employeeRepository;
 
-	public Employee saveEmployee(Employee employee) {
-		return employeeRepository.save(employee);
+	public boolean saveEmployee(Employee employee) {
+		
+		try {
+			employeeRepository.save(employee);
+			return true;
+		} catch (Exception e) {
+			return false;
+		}
+	
 	}
 
 	public List<Employee> gellAllEmployee() {
@@ -26,7 +33,10 @@ public class EmployeeDao {
 		Optional<Employee> eOptional = employeeRepository.findById(id);
 		return eOptional.get();
 	}
-
+	  
+//	 public   List<Employee> findByEmployeeName(String name) {
+//		        return employeeRepository.findByEmployeeName(name);
+//		    }
 	public Employee deleteEmployeeById(int id) {
 		Optional<Employee> optional=employeeRepository.findById(id);
 		if (optional.get()!=null) {

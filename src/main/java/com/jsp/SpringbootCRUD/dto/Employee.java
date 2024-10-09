@@ -1,20 +1,37 @@
 package com.jsp.SpringbootCRUD.dto;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+
+import io.micrometer.common.lang.NonNull;
+import jakarta.persistence.*;
+
 
 @Entity
 public class Employee {
+
+
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int id;
+	@Column(nullable = false)
 	private String name;
 	private long phone;
 	private String email;
 	private String password;
 	private double sal;
+
+
+
+	public Employee() {
+	}
+
+	public Employee(int id, String name, long phone, String email, String password, double sal) {
+		this.id = id;
+		this.name = name;
+		this.phone = phone;
+		this.email = email;
+		this.password = password;
+		this.sal = sal;
+	}
 
 	public int getId() {
 		return id;
@@ -60,7 +77,7 @@ public class Employee {
 		return sal;
 	}
 
-	public void setSal(long sal) {
+	public void setSal(double sal) {
 		this.sal = sal;
 	}
 }

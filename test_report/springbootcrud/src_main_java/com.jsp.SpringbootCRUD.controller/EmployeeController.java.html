@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../../../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../../../jacoco-resources/report.gif" type="image/gif"/><title>EmployeeController.java</title><link rel="stylesheet" href="../../../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../../../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../../../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../../../index.html" class="el_report">springbootcrud (27 Sept 2024 1:28:27 pm)</a> &gt; <a href="../../index.html" class="el_group">springbootcrud</a> &gt; <a href="../index.html" class="el_bundle">src/main/java</a> &gt; <a href="index.source.html" class="el_package">com.jsp.SpringbootCRUD.controller</a> &gt; <span class="el_source">EmployeeController.java</span></div><h1>EmployeeController.java</h1><pre class="source lang-java linenums">package com.jsp.SpringbootCRUD.controller;
+
+import java.util.List;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+import org.springframework.web.bind.annotation.DeleteMapping;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RestController;
+
+import com.jsp.SpringbootCRUD.dto.Employee;
+import com.jsp.SpringbootCRUD.service.EmployeService;
+
+
+@RestController
+<span class="fc" id="L20">public class EmployeeController {</span>
+	@Autowired
+	EmployeService employeService;
+	
+	@PostMapping(&quot;/employee&quot;)
+	public Employee saveEmployee(@RequestBody Employee employee) {
+<span class="nc" id="L26">		return employeService.saveEmployee(employee);</span>
+	}
+	@GetMapping(&quot;/employee&quot;)
+	public List&lt;Employee&gt; getAllEmployee(){
+<span class="nc" id="L30">		return employeService.getAllEmployee();</span>
+	}
+	
+	@GetMapping(&quot;/employee/name/{name}&quot;)
+    public List&lt;Employee&gt; getEmployeesByName(@PathVariable String name) {
+<span class="nc" id="L35">        return employeService.findByEmployeeName(name);</span>
+    }
+	
+	@GetMapping(&quot;/employee/{id}&quot;)
+	public Employee getAllEmployeeBYId(@PathVariable int id) {
+<span class="nc" id="L40">		return employeService.getallemployeeById(id);</span>
+	}
+	
+	@DeleteMapping(&quot;employee/{id}&quot;)
+	public Employee deleteEmployeeById(@PathVariable int id) {
+<span class="nc" id="L45">		return employeService.deleteEmployeeById(id);</span>
+	}
+	@PutMapping(&quot;employee/{id}&quot;)
+	public Employee updateEmployee(@PathVariable Employee employee)
+	{
+<span class="nc" id="L50">		return employeService.updateEmployeeById(employee);</span>
+	}
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.12.202403310830</span>springbootcrud (27 Sept 2024 1:28:27 pm)</div></body></html>
